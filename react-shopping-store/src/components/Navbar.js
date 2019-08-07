@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../logo-black.png';
+import { ButtonContainer } from './styled/ButtonContainer';
+import styled from 'styled-components';
 
 export default class Navbar extends Component {
     render() {
         return (
-            <nav className="navbar navbar-expand-sm navbar-dark px-sm-5">
+            <NavWrapper className="navbar navbar-expand-sm bg-white navbar-dark px-sm-5">
                 <Link to="/">
                     <img src={logo} alt="store" className="navbar-brand nav-bar-icon-size"/>
                 </Link>
@@ -14,17 +16,23 @@ export default class Navbar extends Component {
                         <Link to="/" className="nav-link" style={{
                             color:"black"
                         }}>
-                            products
+                            Products
                         </Link>
                     </li>
                 </ul>
                 <Link to="/cart" className="ml-auto" >
-                        <button>
+                        <ButtonContainer>
+                            <span className="mr-2">
                             <i className="fas fa-cart-plus"></i>
+                            </span>
                             my cart                            
-                        </button>
+                        </ButtonContainer>
                 </Link>
-            </nav>
+            </NavWrapper>
             )
     }
 }
+
+const NavWrapper = styled.nav`
+    font-size: 1.3rem;
+`
