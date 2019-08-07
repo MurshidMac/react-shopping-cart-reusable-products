@@ -2,22 +2,20 @@ import React, { Component } from 'react'
 import Product from './Product';
 import Title from './styled/Title';
 import { storeProducts } from '../data';
+import { ProductConsumer } from '../context';
+
+
+
+function ProductMap(value) {
+    
+    return (
+        value.map((product) =>
+            <Product key={product.id} product={product}>{product.title}</Product>
+        )
+    );
+}
+
 export default class ProductList extends Component {
-
-    state = {
-        products: []
-    }
-
-    componentWillMount(){
-        const list = this.axiosGetProducts();
-        console.log("Getting the list ", list)
-        this.setState({products: list})
-    }
-
-    //Do the rest call from here
-    axiosGetProducts(){
-        return storeProducts;
-    }
 
 
     render() {
@@ -28,7 +26,12 @@ export default class ProductList extends Component {
                         <Title name="Our" title="Products" />
                         {/* Product Row */}
                         < div className="row">
-
+                            <ProductConsumer>
+                                {value => {
+                                    //console.log('Value ', value),
+                                    return ProductMap(value.products)
+                                }}
+                            </ProductConsumer>
                         </div>
                     </div>
                 </div>
