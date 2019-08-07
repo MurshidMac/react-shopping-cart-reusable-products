@@ -22,4 +22,7 @@ body{
 .text-bright{
   color: var(--lightBlue);
 }
-
+.nav-bar-icon-size{
+  height: 5rem;
+  width: 7rem;
+}
