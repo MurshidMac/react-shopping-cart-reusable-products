@@ -20,8 +20,6 @@ class ProductProvider extends Component {
     }
 
     products(){
-        let list = this.axiosGetProducts();
-        console.log("Getting the list ", list)
         this.setState({products: this.axiosGetProducts(),
             detailProduct: this.axiosGetDetails()
         })
